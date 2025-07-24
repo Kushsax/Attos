@@ -61,8 +61,8 @@
 /** @type {Product[]} */
 export const products = [
   {
-    id: "21",
-    name: "boAt Type C Cable w/ 6.5A Super Fast Charging, Stress Resistance Type C A750 - Rebellious Black",
+    id: "boat-type-c-cable-a750",
+    name: "Type C Cable w/ 6.5A Super Fast Charging, Stress Resistance Type C A750 - Rebellious Black",
     brand: "boAt",
     model: "A7500",
     description:

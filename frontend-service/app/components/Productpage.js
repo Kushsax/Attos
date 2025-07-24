@@ -10,8 +10,8 @@ import { Separator } from "@/components/ui/separator";
 import { products } from "@/data/produts";
 import { getIcon } from "@/utils/icons"; 
 
-export default function ProductPage() {
-  const product = products[1];
+export default function ProductPage(params) {
+  const product = products[params.id];
 
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
