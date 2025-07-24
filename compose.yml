@@ -60,6 +60,31 @@ services:
       - app-network
     restart: unless-stopped
 
+  nextjs:
+    build:
+      context: .
+      dockerfile: frontend-service/Dockerfile
+    container_name: nextjs
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+    depends_on:
+      - postgres
+      - redis
+      - kafka
+
+  ranking-service:
+    build:
+      context: ./ranking-service
+    container_name: ranking-service
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    depends_on:
+      - kafka
+
 volumes:
   redis-data:
   pg-data:
