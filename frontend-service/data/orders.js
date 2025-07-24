@@ -1,0 +1,40 @@
+const mockOrders = [
+  {
+    id: "ORD-001",
+    customerName: "Kushagra Saxena",
+    customerPhone: "+91 9833571101",
+    pickupAddress: "D-mart Ram mandir Road",
+    deliveryAddress: "B 301 kshitij Great eastern Links",
+    estimatedTime: "25 mins",
+    orderValue: 249,
+    deliveryFee: 23,
+    items: ["Groceries", "Fresh Produce", "Dairy"],
+    distance: "3.2 km",
+  },
+  {
+    id: "ORD-002",
+    customerName: "Mike Chen",
+    customerPhone: "+1 (555) 987-6543",
+    pickupAddress: "QuickMart Express, 789 Center Blvd",
+    deliveryAddress: "321 Pine Street, Unit 15, Westside",
+    estimatedTime: "18 mins",
+    orderValue: 28.9,
+    deliveryFee: 3.5,
+    items: ["Snacks", "Beverages"],
+    distance: "2.1 km",
+  },
+  {
+    id: "ORD-003",
+    customerName: "Emily Rodriguez",
+    customerPhone: "+1 (555) 456-7890",
+    pickupAddress: "MegaStore, 555 Commerce Way, Mall District",
+    deliveryAddress: "987 Elm Drive, House #12, Northside",
+    estimatedTime: "35 mins",
+    orderValue: 67.25,
+    deliveryFee: 5.0,
+    items: ["Electronics", "Home Goods", "Personal Care"],
+    distance: "4.8 km",
+  },
+];
+
+export default mockOrders;
