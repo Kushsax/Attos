@@ -1,5 +1,6 @@
-"use client";
+"use client"
 
+<<<<<<< HEAD:frontend-service/app/components/Productpage.js
 import { useState } from "react";
 import Image from "next/image";
 import { Star, Heart, Share2, ShoppingCart, Search, Menu, User, MapPin, ChevronDown } from "lucide-react";
@@ -11,12 +12,40 @@ import { products } from "@/data/produts";
 import { getIcon } from "@/utils/icons"; 
 function ProductPage(params) {
   const product = products[params.id];
+=======
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
+import { Star, Heart, Share2, ShoppingCart, Search, User, MapPin, ChevronDown, ArrowLeft } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent } from "@/components/ui/card"
+import { Separator } from "@/components/ui/separator"
+import { getProductById } from "@/data/products"
+import { getIcon } from "@/utils/icons"
 
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+interface ProductPageProps {
+  params: {
+    id: string
+  }
+}
+>>>>>>> e268f61 (___):frontend-service/app/product/[id]/page.tsx
+
+export default function ProductPage({ params }: ProductPageProps) {
+  const router = useRouter()
+  const product = getProductById(params.id)
+  const [selectedImage, setSelectedImage] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   if (!product) {
-    return <div>Product not found</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold mb-4">Product not found</h1>
+          <Button onClick={() => router.push("/")}>Go back to home</Button>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -27,11 +56,11 @@ function ProductPage(params) {
           <div className="flex items-center justify-between h-16">
             {/* Logo and Location */}
             <div className="flex items-center space-x-4">
+              <Button variant="ghost" size="sm" onClick={() => router.back()} className="mr-2">
+                <ArrowLeft className="w-4 h-4" />
+              </Button>
               <div className="flex items-center space-x-2">
-                {/* <div className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">A</span>
-                </div> */}
-                <span className="text-3xl font-bold font-seriff text-blue-500">Attos</span>
+                <span className="text-3xl font-bold text-blue-500">Attos</span>
               </div>
               <div className="hidden md:flex items-center space-x-1 text-sm text-gray-600">
                 <MapPin className="w-4 h-4" />
@@ -58,13 +87,10 @@ function ProductPage(params) {
                 <User className="w-4 h-4 mr-2" />
                 Login
               </Button>
-              <Button size="sm" className="bg-blue-500 hover:bg-purple-700">
+              <Button size="sm" className="bg-blue-500 hover:bg-purple-700" onClick={() => router.push("/cart")}>
                 <ShoppingCart className="w-4 h-4 mr-2" />
                 Cart
               </Button>
-              {/* <Button variant="ghost" size="sm" className="md:hidden">
-                <Menu className="w-4 h-4" />
-              </Button> */}
             </div>
           </div>
         </div>
@@ -73,8 +99,10 @@ function ProductPage(params) {
       {/* Breadcrumb */}
       <div className="container mx-auto px-4 py-3">
         <div className="text-sm text-gray-500">
-          <span>Home</span> / <span>{product.category.main}</span> /{" "}
-          <span>{product.category.sub}</span> /{" "}
+          <button onClick={() => router.push("/")} className="hover:text-gray-700">
+            Home
+          </button>{" "}
+          / <span>{product.category.main}</span> / <span>{product.category.sub}</span> /{" "}
           <span className="text-gray-900">{product.category.specific}</span>
         </div>
       </div>
@@ -99,9 +127,7 @@ function ProductPage(params) {
                   key={index}
                   onClick={() => setSelectedImage(index)}
                   className={`aspect-square bg-gray-50 rounded-lg overflow-hidden border-2 ${
-                    selectedImage === index
-                      ? "border-blue-500"
-                      : "border-transparent"
+                    selectedImage === index ? "border-blue-500" : "border-transparent"
                   }`}
                 >
                   <Image
@@ -130,9 +156,7 @@ function ProductPage(params) {
                   </Badge>
                 ))}
               </div>
-              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                {product.name}
-              </h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{product.name}</h1>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-1">
                   <div className="flex">
@@ -147,28 +171,18 @@ function ProductPage(params) {
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-gray-600">
-                    ({product.reviews.average})
-                  </span>
+                  <span className="text-sm text-gray-600">({product.reviews.average})</span>
                 </div>
-                <span className="text-sm text-gray-500">
-                  {product.reviews.count.toLocaleString()} reviews
-                </span>
+                <span className="text-sm text-gray-500">{product.reviews.count.toLocaleString()} reviews</span>
               </div>
             </div>
 
             {/* Price */}
             <div className="space-y-2">
               <div className="flex items-baseline space-x-2">
-                <span className="text-3xl font-bold text-gray-900">
-                  ₹{product.price.current}
-                </span>
-                <span className="text-lg text-gray-500 line-through">
-                  ₹{product.price.original}
-                </span>
-                <Badge className="bg-green-100 text-green-800">
-                  {product.price.discount}% OFF
-                </Badge>
+                <span className="text-3xl font-bold text-gray-900">₹{product.price.current}</span>
+                <span className="text-lg text-gray-500 line-through">₹{product.price.original}</span>
+                <Badge className="bg-green-100 text-green-800">{product.price.discount}% OFF</Badge>
               </div>
               <p className="text-sm text-gray-600">Inclusive of all taxes</p>
             </div>
@@ -176,13 +190,13 @@ function ProductPage(params) {
             {/* Key Features */}
             <div className="grid grid-cols-2 gap-4">
               {product.keyFeatures.map((feature, index) => {
-                const IconComponent = getIcon(feature.icon); // getIcon function used here
+                const IconComponent = getIcon(feature.icon)
                 return (
                   <div key={index} className="flex items-center space-x-2">
                     <IconComponent className="w-5 h-5 text-blue-500" />
                     <span className="text-sm">{feature.text}</span>
                   </div>
-                );
+                )
               })}
             </div>
 
@@ -198,10 +212,7 @@ function ProductPage(params) {
                     -
                   </button>
                   <span className="px-4 py-1 border-x">{quantity}</span>
-                  <button
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="px-3 py-1 hover:bg-gray-100"
-                  >
+                  <button onClick={() => setQuantity(quantity + 1)} className="px-3 py-1 hover:bg-gray-100">
                     +
                   </button>
                 </div>
@@ -220,9 +231,7 @@ function ProductPage(params) {
                 </Button>
               </div>
 
-              <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">
-                Buy Now
-              </Button>
+              <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white">Buy Now</Button>
             </div>
 
             {/* Delivery Info */}
@@ -231,20 +240,14 @@ function ProductPage(params) {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium">Delivery</span>
-                    <span className="text-sm text-green-600 font-medium">
-                      {product.deliveryTime}
-                    </span>
+                    <span className="text-sm text-green-600 font-medium">{product.deliveryTime}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium">Free delivery</span>
-                    <span className="text-sm text-gray-600">
-                      on orders above ₹{product.freeDeliveryThreshold}
-                    </span>
+                    <span className="text-sm text-gray-600">on orders above ₹{product.freeDeliveryThreshold}</span>
                   </div>
                   <Separator />
-                  <div className="text-xs text-gray-500">
-                    Order within 2 hours for delivery today
-                  </div>
+                  <div className="text-xs text-gray-500">Order within 2 hours for delivery today</div>
                 </div>
               </CardContent>
             </Card>
@@ -288,6 +291,11 @@ function ProductPage(params) {
         </div>
       </div>
     </div>
+<<<<<<< HEAD:frontend-service/app/components/Productpage.js
   );
 }
 export default ProductPage;
+=======
+  )
+}
+>>>>>>> e268f61 (___):frontend-service/app/product/[id]/page.tsx

@@ -3,6 +3,7 @@ import {
   Shield,
   Truck,
   RotateCcw,
+  Leaf,
   Star,
   Heart,
   Share2,
@@ -12,20 +13,14 @@ import {
   User,
   MapPin,
   ChevronDown,
-} from "lucide-react";
+} from "lucide-react"
 
-/**
- * @typedef {import("lucide-react").LucideIcon} LucideIcon
- */
-
-/**
- * @type {Record<string, LucideIcon>}
- */
-export const iconMap = {
+const iconMap = {
   zap: Zap,
   shield: Shield,
   truck: Truck,
   "rotate-ccw": RotateCcw,
+  leaf: Leaf,
   star: Star,
   heart: Heart,
   share2: Share2,
@@ -35,15 +30,8 @@ export const iconMap = {
   user: User,
   "map-pin": MapPin,
   "chevron-down": ChevronDown,
-};
+}
 
-/**
- * Returns the Lucide icon component based on its name.
- * Defaults to the Zap icon if the specified icon is not found.
- *
- * @param {string} iconName - The name of the icon (e.g., "zap", "truck").
- * @returns {LucideIcon} The Lucide icon component.
- */
 export const getIcon = (iconName) => {
-  return iconMap[iconName] || Zap; // Default to Zap if icon not found
-};
+  return iconMap[iconName] || Star
+}

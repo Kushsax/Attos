@@ -35,6 +35,6 @@ const mockOrders = [
     items: ["Electronics", "Home Goods", "Personal Care"],
     distance: "4.8 km",
   },
-];
+]
 
-export default mockOrders;
+export default mockOrders
