@@ -1,1 +1,68 @@
+# Next.js specific
+.next/
+out/
+.vercel/ # Vercel specific build output
+.turbo/ # Turborepo cache directory
+
+# Dependencies
 node_modules/
+/yarn.lock
+/pnpm-lock.yaml
+/package-lock.json
+
+# Production
+/build
+
+# Miscellaneous
+.DS_Store
+*.pem
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env*.local
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.staging.local
+
+# Optional: if you use VS Code
+.vscode/
+
+# Optional: if you use WebStorm/IntelliJ
+.idea/
+
+# Optional: if you use Deno (for some specific tools)
+.deno/
+
+# Optional: if you generate reports
+/coverage
+/.nyc_output
+
+# Log files
+*.log
+
+# Temp files
+*.tmp
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# VS Code specific for remote development (if used)
+.vscode-server/
+.vscode-server-insiders/
+
+# Docker specific (if you have Docker setup in project root)
+Dockerfile.local
+.dockerignore
