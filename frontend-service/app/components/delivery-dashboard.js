@@ -6,29 +6,30 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import mockOrders from "@/data/orders"
 
+import mockOrders from "@/data/orders";
 
 export default function DeliveryDashboard() {
+  // Initializing state directly with mockOrders ensures consistent rendering
+  // between the server (SSR) and the client (hydration).
   const [orders, setOrders] = useState(mockOrders);
 
   const handleAcceptOrder = (orderId) => {
     setOrders(orders.filter((order) => order.id !== orderId));
-    // In a real app, this would make an API call to accept the order
+    // In a real app, this would also involve an API call to update the order status.
   };
 
   const handleDeclineOrder = (orderId) => {
     setOrders(orders.filter((order) => order.id !== orderId));
-    // In a real app, this would make an API call to decline the order
+    // Similarly, a real application would make an API call here to decline the order.
   };
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <div className="bg-white border-b border-gray-200 px-4 py-4">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold font-seriff text-blue-500">Attos</h1>
+            <h1 className="text-3xl font-bold font-seriff text-blue-500">Attos</h1>
             <p className="text-sm text-gray-600">Delivery Partner</p>
           </div>
           <Badge variant="secondary" className="bg-orange-100 text-orange-800">
@@ -37,7 +38,6 @@ export default function DeliveryDashboard() {
         </div>
       </div>
 
-      {/* Orders List */}
       <div className="p-4 space-y-4">
         {orders.length === 0 ? (
           <div className="text-center py-12">
@@ -59,7 +59,6 @@ export default function DeliveryDashboard() {
               </CardHeader>
 
               <CardContent className="space-y-4">
-                {/* Customer Info */}
                 <div className="flex items-center gap-3">
                   <User className="h-4 w-4 text-gray-500" />
                   <div>
@@ -73,7 +72,6 @@ export default function DeliveryDashboard() {
 
                 <Separator />
 
-                {/* Pickup Location */}
                 <div className="space-y-2">
                   <div className="flex items-start gap-3">
                     <div className="bg-blue-100 p-1 rounded-full mt-0.5">
@@ -86,7 +84,6 @@ export default function DeliveryDashboard() {
                   </div>
                 </div>
 
-                {/* Delivery Location */}
                 <div className="space-y-2">
                   <div className="flex items-start gap-3">
                     <div className="bg-green-100 p-1 rounded-full mt-0.5">
@@ -101,7 +98,6 @@ export default function DeliveryDashboard() {
 
                 <Separator />
 
-                {/* Order Details */}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <p className="text-sm text-gray-600">Items</p>
@@ -113,7 +109,6 @@ export default function DeliveryDashboard() {
                   </div>
                 </div>
 
-                {/* Payment Info */}
                 <div className="bg-gray-50 rounded-lg p-3">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-gray-600">Order Value</span>
@@ -128,7 +123,6 @@ export default function DeliveryDashboard() {
                   </div>
                 </div>
 
-                {/* Action Buttons */}
                 <div className="flex gap-3 pt-2">
                   <Button
                     variant="outline"
