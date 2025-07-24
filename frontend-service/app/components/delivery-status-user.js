@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Separator } from "@/components/ui/separator"
 
-export default function Component() {
+function Component() {
   useEffect(() => {
     // Load Leaflet CSS and JS dynamically
     const loadLeaflet = async () => {
@@ -364,3 +364,4 @@ export default function Component() {
     </div>
   )
 }
+export default Component;

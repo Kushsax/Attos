@@ -49,7 +49,7 @@ const mockCart = [
   },
 ];
 
-export default function CartPage() {
+function CartPage() {
   const [cartItems, setCartItems] = useState(mockCart);
   const [deliveryTime] = useState("10");
   const [promoCode, setPromoCode] = useState("");
@@ -398,3 +398,4 @@ export default function CartPage() {
     </main>
   );
 }
+export default CartPage;

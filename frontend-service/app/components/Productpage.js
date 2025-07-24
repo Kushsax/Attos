@@ -9,8 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { products } from "@/data/produts";
 import { getIcon } from "@/utils/icons"; 
-
-export default function ProductPage(params) {
+function ProductPage(params) {
   const product = products[params.id];
 
   const [selectedImage, setSelectedImage] = useState(0);
@@ -87,7 +86,7 @@ export default function ProductPage(params) {
           <div className="space-y-4">
             <div className="aspect-square bg-gray-50 rounded-lg overflow-hidden">
               <Image
-                src={product.images[selectedImage]?.src || "/placeholder.svg"}
+                src={product.images[selectedImage]?.src || "https://ibb.co/RTPjbTT9"}
                 alt={product.images[selectedImage]?.alt || "Product Image"}
                 width={500}
                 height={500}
@@ -291,3 +290,4 @@ export default function ProductPage(params) {
     </div>
   );
 }
+export default ProductPage;

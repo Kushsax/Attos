@@ -211,7 +211,7 @@ function CategoryCard({ category }) {
 }
 
 // ========== MAIN COMPONENT ==========
-export default function ZeptoHome() {
+function ZeptoHome() {
   const [searchTerm, setSearchTerm] = useState("");
   const [cartCount, setCartCount] = useState(3);
   const [currentLocation, setCurrentLocation] = useState("Mumbai, India");
@@ -262,9 +262,10 @@ export default function ZeptoHome() {
             {/* Logo & Location */}
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-3xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 flex items-center justify-center shadow-md">
-                  <span className="text-white font-bold text-lg">Z</span>
+                <div className="w-10 h-10 from-blue-500 via-purple-600 to-pink-600 flex items-center justify-center shadow-md">
+                  <span className="text-blue-500 pr-10 font-bold text-3xl">Attos</span>
                 </div>
+                
                 <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full border-2 border-white animate-pulse" />
               </div>
               <div>
@@ -577,3 +578,5 @@ export default function ZeptoHome() {
     </div>
   );
 }
+
+export default ZeptoHome;

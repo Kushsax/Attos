@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 
 import mockOrders from "@/data/orders";
 
-export default function DeliveryDashboard() {
+function DeliveryDashboard() {
   // Initializing state directly with mockOrders ensures consistent rendering
   // between the server (SSR) and the client (hydration).
   const [orders, setOrders] = useState(mockOrders);
@@ -116,7 +116,7 @@ export default function DeliveryDashboard() {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-gray-900 flex items-center gap-1">
-                      <DollarSign className="h-4 w-4" />
+                      
                       Your Earnings
                     </span>
                     <span className="text-lg font-bold text-green-600">Rs.{order.deliveryFee.toFixed(2)}</span>
@@ -146,3 +146,4 @@ export default function DeliveryDashboard() {
     </div>
   );
 }
+export default DeliveryDashboard;
