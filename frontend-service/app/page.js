@@ -1,6 +1,11 @@
+import ProductPage from "./components/Productpage.js";
 
 export default function Home() {
   return (
-    <h1>ATTOS</h1>
+    <>
+    <ProductPage id="21" />
+    </>
+    
+
   );
 }
